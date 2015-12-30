@@ -144,17 +144,17 @@ AccountsEntry.entrySignUpEvents = {
           isEmailSignUp = _.contains(['USERNAME_AND_EMAIL', 'EMAIL_ONLY'], AccountsEntry.settings.passwordSignupFields);
           userCredential = isEmailSignUp ? email : username;
           if (AccountsEntry.settings.waitEmailVerification === true && isEmailSignUp) {
-            Router.go(AccountsEntry.settings.emailVerificationPendingRoute);
+            FlowRouter.go(AccountsEntry.settings.emailVerificationPendingRoute);
           }
           else {
             Meteor.loginWithPassword(userCredential, password, function(error) {
               if (error) {
                 Alerts.add(error.reason, 'danger');
               } else if (Session.get('fromWhere')) {
-                Router.go(Session.get('fromWhere'));
+                FlowRouter.go(Session.get('fromWhere'));
                 Session.set('fromWhere', null);
               } else {
-                Router.go(AccountsEntry.settings.dashboardRoute);
+                FlowRouter.go(AccountsEntry.settings.dashboardRoute);
               }
             });
           }

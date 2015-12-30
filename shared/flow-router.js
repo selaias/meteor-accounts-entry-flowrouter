@@ -1,5 +1,3 @@
-var exclusions;
-
 var accountsEntryRoutes = FlowRouter.group({
   prefix: '/accounts',
   triggersEnter: [trackRouteEntry],
@@ -7,113 +5,71 @@ var accountsEntryRoutes = FlowRouter.group({
 });
 
 function trackRouteEntry(context) {
- 
+  Alerts.clear();
 }
 
 function trackRouteClose(context) {
-  
+
 }
 
-Router.route("entrySignIn", {
-  path: "/sign-in",
+accountsEntryRoutes.route("/sign-in", {
   name: 'entrySignIn',
-  template: 'entrySignIn',
-  onBeforeAction: function() {
-    Alerts.clear();
-    Session.set('buttonText', 'in');
-    this.next();
-  },
-  onRun: function() {
-    var pkgRendered, userRendered;
+  triggersEnter: [function(context, redirect) {
     if (Meteor.userId()) {
-      Router.go(AccountsEntry.settings.dashboardRoute);
+      redirect(AccountsEntry.settings.dashboardRoute);
     }
-    if (AccountsEntry.settings.signInTemplate) {
-      this.template = AccountsEntry.settings.signInTemplate;
-      pkgRendered = Template.entrySignIn.rendered;
-      userRendered = Template[this.template].rendered;
-      if (userRendered) {
-        Template[this.template].rendered = function() {
-          pkgRendered.call(this);
-          return userRendered.call(this);
-        };
-      } else {
-        Template[this.template].rendered = pkgRendered;
-      }
-      Template[this.template].events(AccountsEntry.entrySignInEvents);
-      Template[this.template].helpers(AccountsEntry.entrySignInHelpers);
-    }
-    this.next();
+    Session.set('buttonText', 'in');
+  }],
+  action: function() { 
+    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
+      [AccountsEntry.settings.contentTemplateName]: 'entrySignIn'});
   }
 });
-Router.route("entrySignUp", {
-  path: "/sign-up",
+accountsEntryRoutes.route("/sign-up", {
   name: 'entrySignUp',
-  template: 'entrySignUp',
-  onBeforeAction: function() {
-    Alerts.clear();
+  triggersEnter: [function(context, redirect) {
     Session.set('buttonText', 'up');
-    this.next();
-  },
-  onRun: function() {
-    var pkgRendered, userRendered;
-    if (AccountsEntry.settings.signUpTemplate) {
-      this.template = AccountsEntry.settings.signUpTemplate;
-      pkgRendered = Template.entrySignUp.rendered;
-      userRendered = Template[this.template].rendered;
-      if (userRendered) {
-        Template[this.template].rendered = function() {
-          pkgRendered.call(this);
-          userRendered.call(this);
-        };
-      } else {
-        Template[this.template].rendered = pkgRendered;
-      }
-      Template[this.template].events(AccountsEntry.entrySignUpEvents);
-      Template[this.template].helpers(AccountsEntry.entrySignUpHelpers);
-    }
-    this.next();
+  }],
+  action: function() {
+    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
+      [AccountsEntry.settings.contentTemplateName]: 'entrySignUp'});
   }
 });
-Router.route("entryForgotPassword", {
-  path: "/forgot-password",
+accountsEntryRoutes.route("/forgot-password", {
   name: 'entryForgotPassword',
-  template: 'entryForgotPassword',
-  onBeforeAction: function() {
-    Alerts.clear();
-    this.next();
+  action: function() {
+    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
+      [AccountsEntry.settings.contentTemplateName]: 'entryForgotPassword'});
   }
 });
-Router.route('entrySignOut', {
-  path: '/sign-out',
+accountsEntryRoutes.route('/sign-out', {
   name: 'entrySignOut',
-  template: 'entrySignOut',
-  onBeforeAction: function() {
-    Alerts.clear();
+  triggersEnter: [function(context, redirect) {
+    Meteor.logout();
     if (AccountsEntry.settings.homeRoute) {
-      Meteor.logout();
-      Router.go(AccountsEntry.settings.homeRoute);
+      redirect(AccountsEntry.settings.homeRoute);
     }
-    this.next();
+  }],
+  action: function() {
+    console.log('User signed out.')
   }
 });
-Router.route('entryResetPassword', {
-  path: 'reset-password/:resetToken',
+accountsEntryRoutes.route('/reset-password/:resetToken', {
   name: 'entryResetPassword',
-  template: 'entryResetPassword',
-  onBeforeAction: function() {
-    Alerts.clear();
+  triggersEnter: [function(context, redirect) {
     Session.set('resetToken', this.params.resetToken);
-    this.next();
+  }],
+  action: function() {
+    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
+      [AccountsEntry.settings.contentTemplateName]: 'entryResetPassword'});
   }
 });
 
-Router.route('entryEmailVerificationPending', {
-  path: '/verification-pending',
+accountsEntryRoutes.route('/verification-pending', {
   name: 'entryEmailVerificationPending',
-  template: 'entryEmailVerificationPending',
-  onBeforeAction: function() {
-    Alerts.clear();
-    this.next();
+  action: function() {
+    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
+      [AccountsEntry.settings.contentTemplateName]: 'home'
+    });
   }
 });

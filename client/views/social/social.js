@@ -47,10 +47,10 @@ Template.entrySocial.events({
     callback = function(err) {
       if (!err) {
         if (Session.get('fromWhere')) {
-          Router.go(Session.get('fromWhere'));
+          FlowRouter.go(Session.get('fromWhere'));
           Session.set('fromWhere', void 0);
         } else {
-          Router.go(AccountsEntry.settings.dashboardRoute);
+          FlowRouter.go(AccountsEntry.settings.dashboardRoute);
         }
       } else if (err instanceof Accounts.LoginCancelledError) {
 

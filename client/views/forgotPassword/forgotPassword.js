@@ -20,7 +20,7 @@ Template.entryForgotPassword.events({
       if (error) {
          Alerts.add(error.reason, 'danger');
       } else {
-        Router.go(AccountsEntry.settings.homeRoute);
+        FlowRouter.go(AccountsEntry.settings.homeRoute);
         Alerts.add(i18n('info.emailSent'), 'success');
       }
     });

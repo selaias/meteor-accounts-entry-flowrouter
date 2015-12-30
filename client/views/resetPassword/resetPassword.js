@@ -53,7 +53,7 @@ Template.entryResetPassword.events({
         Alerts.add(error.reason || "Unknown error", 'danger')
       } else {
         Session.set('resetToken', null);
-        Router.go(AccountsEntry.settings.dashboardRoute);
+        FlowRouter.go(AccountsEntry.settings.dashboardRoute);
         Alerts.add(i18n('info.passwordReset'), 'success');
       }
     });

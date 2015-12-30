@@ -68,7 +68,7 @@ Package.onUse(function(api) {
   api.export('SimpleForm', ['client', 'server']);
 
   api.addFiles([
-    'shared/router.js',
+    'shared/flow-router.js',
 
     'shared/i18n/i18n_ar.js',
     'shared/i18n/i18n_de.js',

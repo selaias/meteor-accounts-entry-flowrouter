@@ -34,13 +34,13 @@
               <input name="password" type="password" class="form-control" value='{{password}}' placeholder="{{i18n 'password'}}">
             </div>
             {{#unless isUsernameOnly}}
-              <p><a href="{{pathFor 'entryForgotPassword'}}">{{i18n "forgotPassword"}}</a></p>
+              <p><a href="/accounts/forgot-password">{{i18n "forgotPassword"}}</a></p>
               <button type="submit" class="submit btn btn-block btn-default">{{i18n "signIn"}}</button>
             {{/unless}}
           </form>
         {{/if}}
         {{#if showCreateAccountLink}}
-        <p class="entry-signup-cta">{{i18n "dontHaveAnAccount"}} <a href="{{pathFor 'entrySignUp'}}">{{i18n "signUp"}}</a></p>
+        <p class="entry-signup-cta">{{i18n "dontHaveAnAccount"}} <a href="/accounts/sign-up">{{i18n "signUp"}}</a></p>
         {{/if}}
       </div>
     </div>
