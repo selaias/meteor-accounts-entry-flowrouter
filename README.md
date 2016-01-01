@@ -1,20 +1,18 @@
 
+# accounts-entry-flowrouter
 
-[![Build Status](https://travis-ci.org/selaias/accounts-entry.png)](https://travis-ci.org/selaias/accounts-entry)
+**NOTE:** This was initially forked from [https://github.com/Differential/accounts-entry] (https://github.com/Differential/accounts-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n)).
 
 
-# accounts-entry
 
-**NOTE:** This is forked from [https://github.com/Differential/accounts-entry] (https://github.com/Differential/accounts-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n))
-
-accounts-entry is a meteorite package that relies on Iron Router and provides an
+accounts-entry is a meteorite package that relies on Flowrouter and provides an
 alternative interface to accounts-ui, with whole pages for sign up
 and sign in.
 
 
 ## Compatibility
 
-accounts-entry is presently compatible with Iron Router 1.0.0 and above. Since meteorite doesn't support semantic version locking.
+accounts-entry-flowrouter is presently compatible with Iron Router 2.10.0 and above. 
 
 ## Getting started
 
@@ -22,14 +20,8 @@ Run:
 
 For Meteor 1.2.0.1 version
 ```
-meteor add selaias:accounts-entry
+meteor add selaias:accounts-entry-flowrouter
 ```
-
-For 1.1.0.3 and below 
-```
-meteor add selaias:accounts-entry@=0.5.0
-```
-You can install the `accounts-ui` package, as it is still used for OAuth setup.
 
 ## Provided routes
 
@@ -85,8 +77,8 @@ We have added support for a signupCode in case you want to have a special code t
 Since this is a young package, we are maintaining compatibility with accounts-ui (so if in a pinch accounts-entry is broken for you, you could easily switch to accounts-ui). We also use the UI for oauth configs from accounts-ui.
 
 ```js
-  Meteor.startup(function () {
-    AccountsEntry.config({
+  Meteor.startup(function () {  
+    AccountsEntry.config({  
       logo: 'logo.png',                          // if set displays logo above sign-in options
       privacyUrl: '/privacy-policy',             // if set adds link to privacy policy and 'you agree to ...' on sign-up page
       termsUrl: '/terms-of-use',                 // if set adds link to terms  'you agree to ...' on sign-up page
