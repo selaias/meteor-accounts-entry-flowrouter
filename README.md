@@ -49,7 +49,7 @@ Here is an Iron-Router route example:
         //...
     },
     triggersEnter: [function(context, redirect) {
-    if (!Meteor.userId() {
+    if (!Meteor.userId()) {
       redirect('/sign-in');
     }
   }],
