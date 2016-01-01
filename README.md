@@ -3,16 +3,14 @@
 
 **NOTE:** This was initially forked from [https://github.com/Differential/accounts-entry] (https://github.com/Differential/accounts-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n)).
 
-
-
-accounts-entry is a meteorite package that relies on Flowrouter and provides an
+accounts-entry-flowrouter is a package that relies on Flowrouter and provides an
 alternative interface to accounts-ui, with whole pages for sign up
-and sign in.
+and sign in. You will get the same functionalities with accounts-entry but this package will use the Flowrouter instead of the Iron Router.
 
 
 ## Compatibility
 
-accounts-entry-flowrouter is presently compatible with Iron Router 2.10.0 and above. 
+accounts-entry-flowrouter is presently compatible with Flowrouter 2.10.0 and above and uses BlazeLayout for rendering
 
 ## Getting started
 
@@ -25,14 +23,14 @@ meteor add selaias:accounts-entry-flowrouter
 
 ## Provided routes
 
-You will get routes and the necessary templates for:
+You will get a group of routes with a prefix `/accounts` and the necessary templates for:
 
 ```
-/sign-in
-/sign-out
-/sign-up
-/forgot-password
-/verification-pending
+/accounts/sign-in
+/accounts/sign-out
+/accounts/sign-up
+/accounts/forgot-password
+/accounts/verification-pending
 ```
 
 
@@ -45,14 +43,17 @@ Simply add the following line of code: `AccountsEntry.signInRequired(this);` to 
 Here is an Iron-Router route example:
 
 ````js
-  Router.route('userProfile', {
-    path: '/profile',
-    template: 'profile',
-    onBeforeAction: function () {
-      AccountsEntry.signInRequired(this);
-      this.next();
+  FlowRouter.route("/settings/:id", {
+    name: "userSettings",
+    action: function(params) {
+        //...
+    },
+    triggersEnter: [function(context, redirect) {
+    if (!Meteor.userId() {
+      redirect('/sign-in');
     }
-  });
+  }],
+});
 ````
 
 ## Setting up password login
@@ -79,6 +80,8 @@ Since this is a young package, we are maintaining compatibility with accounts-ui
 ```js
   Meteor.startup(function () {  
     AccountsEntry.config({  
+      layoutName: "flowlayout",                  // define the flowrouter layout
+      contentTemplateName: "main",               // 
       logo: 'logo.png',                          // if set displays logo above sign-in options
       privacyUrl: '/privacy-policy',             // if set adds link to privacy policy and 'you agree to ...' on sign-up page
       termsUrl: '/terms-of-use',                 // if set adds link to terms  'you agree to ...' on sign-up page
