@@ -1,7 +1,7 @@
 
 # accounts-entry-flowrouter
 
-**NOTE:** This was initially forked from [https://github.com/Differential/accounts-entry] (https://github.com/Differential/accounts-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n)).
+**Disclaimer:** This was initially forked from [https://github.com/Differential/accounts-entry] (https://github.com/Differential/accounts-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n)).
 
 accounts-entry-flowrouter is a package that relies on Flowrouter and provides an
 alternative interface to accounts-ui, with whole pages for sign up
@@ -154,3 +154,11 @@ The default configuration includes:
 
 Remember, you must provide a route for home (used when signing out) and
 dashboard (used after signing in).
+
+##Contribution
+Feel free to help out grow this package.
+
+
+## Licence
+
+MIT
