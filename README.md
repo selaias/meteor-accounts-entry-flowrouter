@@ -56,6 +56,23 @@ Here is an Iron-Router route example:
 });
 ````
 
+## BlazeLayout integration 
+
+To fully integrate with BlazeLayout package in order to manage rendering you may need to define the layout template as well as the main content template container ( configuration settings `layoutName: "flowlayout"` and `contentTemplateName: "main"` )
+
+
+```html
+<template name="flowlayout">
+  {{>top}}
+  <section id="main-content">
+    {{> Template.dynamic template=main}}
+  </section>
+  <footer id="footer">
+    {{> footer }}
+  </footer>
+</template>
+```
+
 ## Setting up password login
 
 Use `meteor add accounts-password` if you want to have email/username login authentication options. This is now optional and will only display if installed. You need to configure an OAuth option if you choose not to have password logins.
@@ -80,8 +97,8 @@ Since this is a young package, we are maintaining compatibility with accounts-ui
 ```js
   Meteor.startup(function () {  
     AccountsEntry.config({  
-      layoutName: "flowlayout",                  // define the flowrouter layout
-      contentTemplateName: "main",               // 
+      layoutName: "flowlayout",                  // define the flowrouter layout name
+      contentTemplateName: "main",               // defile the default rendering template name
       logo: 'logo.png',                          // if set displays logo above sign-in options
       privacyUrl: '/privacy-policy',             // if set adds link to privacy policy and 'you agree to ...' on sign-up page
       termsUrl: '/terms-of-use',                 // if set adds link to terms  'you agree to ...' on sign-up page
