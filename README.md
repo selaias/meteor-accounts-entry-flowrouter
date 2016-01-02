@@ -1,12 +1,15 @@
 
 # accounts-entry-flowrouter
 
-**Disclaimer:** This was initially forked from [https://github.com/Differential/accounts-entry] (https://github.com/Differential/accounts-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n)).
+*********************************************************
+**************  **IMPORTANT NOTE:**  ********************
+*********************************************************
+This was initially forked from [https://github.com/Differential/accounts-entry] (https://github.com/Differential/accounts-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n)).
 
 accounts-entry-flowrouter is a package that relies on Flowrouter and provides an
 alternative interface to accounts-ui, with whole pages for sign up
 and sign in. You will get the same functionalities with accounts-entry but this package will use the Flowrouter instead of the Iron Router.
-
+*********************************************************
 
 ## Compatibility
 
