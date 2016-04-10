@@ -98,7 +98,6 @@ We have added support for a signupCode in case you want to have a special code t
 Since this is a young package, we are maintaining compatibility with accounts-ui (so if in a pinch accounts-entry is broken for you, you could easily switch to accounts-ui). We also use the UI for oauth configs from accounts-ui.
 
 ```js
-  Meteor.startup(function () {  
     AccountsEntry.config({  
       layoutName: "flowlayout",                  // define the flowrouter layout name
       contentTemplateName: "main",               // defile the default rendering template name
@@ -125,7 +124,6 @@ Since this is a young package, we are maintaining compatibility with accounts-ui
         required: true                           // Adds html 5 required property if true
        }]
     });
-  });
 ```
 
 ### In SERVER code only
