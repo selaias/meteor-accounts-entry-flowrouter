@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Make signin and signout their own pages with routes (in javascript)",
-  version: '0.1.0',
+  version: '0.1.3',
   name: "selaias:accounts-entry-flowrouter",
   git: 'https://github.com/selaias/meteor-accounts-entry-flowrouter.git',
 });
