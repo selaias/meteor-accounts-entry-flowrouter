@@ -32,7 +32,9 @@ Template._entryExtraSignUpField.helpers({
     if (this.required) {
       req = " required";
     }
-    var str =  "<label for='"+ this.field +"'>" + this.label + "</label><input type='"+ this.type +"' id='" + this.field + "' name='"+ this.field +"' value='"+ this.name +"' class='form-control "+ this.html_class +"' placeholder='" + this.placeholder +"'" + req +">";
+    var name = this.name || "";
+    var placeholder = this.placeholder || "";
+    var str =  "<label for='"+ this.field +"'>" + this.label + "</label><input type='"+ this.type +"' id='" + this.field + "' name='"+ this.field +"' value='"+ name +"' class='form-control "+ this.html_class +"' placeholder='" + placeholder +"'" + req +">";
 
     return new Spacebars.SafeString(str); 
   },
